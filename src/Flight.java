@@ -19,14 +19,15 @@ public abstract class Flight {
     Plane plane;
     Airline airline;
 
-    public Flight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate, Plane plane, Airline airline) {
+    public Flight(String flightNumber, String destination, Time departureTime, int baseRate, Plane plane, Airline airline) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.departureTime = departureTime;
-        this.flightCost = flightCost;
         this.baseRate = baseRate;
         this.plane = plane;
         this.airline = airline;
+
+        this.flightCost = (int)(plane.getModel().getCapacity() * this.baseRate * (airline.getProfitRate() + 1.0));
     }
 
     /**

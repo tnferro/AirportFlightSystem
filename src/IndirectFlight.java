@@ -15,11 +15,20 @@ public class IndirectFlight extends Flight {
     List<Boolean>  boardingPassengers = new ArrayList<>();
     List<Integer> levies  = new ArrayList<>();
 
-    public IndirectFlight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate, Plane plane, Airline airline, List<Boolean> boardingPassengers, List<Integer> levies, List<Airport> transitAirports) {
-        super(flightNumber, destination, departureTime, flightCost, baseRate, plane, airline);
+    public IndirectFlight(String flightNumber, String destination, Time departureTime, int baseRate, Plane plane, Airline airline, List<Boolean> boardingPassengers, List<Integer> levies, List<Airport> transitAirports) {
+        super(flightNumber, destination, departureTime, baseRate, plane, airline);
         this.boardingPassengers = boardingPassengers;
         this.levies = levies;
         this.transitAirports = transitAirports;
+
+        int sumLevies = 0;
+        Iterator<Integer> leviesIt = levies.iterator();
+        while(leviesIt.hasNext()) {
+            int levy = leviesIt.next();
+            sumLevies += levy;
+        }
+
+        this.flightCost += sumLevies;
     }
 
     /**

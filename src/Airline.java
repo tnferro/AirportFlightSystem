@@ -7,7 +7,7 @@ public class Airline {
     float profitRate;
     Collection<Flight> flights;
 
-    public Airline(String code, String name, int profitRate) {
+    public Airline(String code, String name, float profitRate) {
         this.code = code;
         this.name = name;
         this.profitRate = profitRate;
