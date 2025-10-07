@@ -8,7 +8,15 @@ import java.sql.Time;
  */
 
 public class DirectFlight extends Flight {
-    public DirectFlight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate) {
-        super(flightNumber, destination, departureTime, flightCost, baseRate);
+    public DirectFlight(String flightNumber, String destination, Time departureTime, int baseRate, Plane plane, Airline airline) {
+        super(
+            flightNumber,
+            destination,
+            departureTime,
+            (int) (baseRate * airline.getProfitRate() * plane.getModel().getCapacity()),
+            baseRate,
+            plane,
+            airline
+        );
     }
 }

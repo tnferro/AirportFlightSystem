@@ -1,5 +1,4 @@
 import java.sql.Time;
-import java.util.*;
 
 /**
  * Engenharia de Software 2025/2026 - Trabalho no4
@@ -17,16 +16,17 @@ public abstract class Flight {
     String departureGate;
     int flightCost;
     int baseRate;
-    //To implement: Plane plane;
-    //To implement: Airline airline;
+    Plane plane;
+    Airline airline;
 
-    public Flight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate) {
+    public Flight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate, Plane plane, Airline airline) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.departureTime = departureTime;
         this.flightCost = flightCost;
         this.baseRate = baseRate;
-
+        this.plane = plane;
+        this.airline = airline;
     }
 
     /**
@@ -67,6 +67,22 @@ public abstract class Flight {
      */
     public int getBaseRate() {
         return baseRate;
+    }
+
+    /**
+     * Returns the plane.
+     * @return plane
+     */
+    public Plane getPlane() {
+        return plane;
+    }
+
+    /**
+     * Returns the airline.
+     * @return airline
+     */
+    public Airline getAirline() {
+        return airline;
     }
 
 }

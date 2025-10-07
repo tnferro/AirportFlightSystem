@@ -11,15 +11,15 @@ import java.util.*;
 
 public class IndirectFlight extends Flight {
 
-    // List<Airport> transitAirports = new ArrayList<>();
+    List<Airport> transitAirports = new ArrayList<>();
     List<Boolean>  boardingPassengers = new ArrayList<>();
     List<Integer> levies  = new ArrayList<>();
 
-    public IndirectFlight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate, List<Boolean> boardingPassengers, List<Integer> levies) {
-        super(flightNumber, destination, departureTime, flightCost, baseRate);
+    public IndirectFlight(String flightNumber, String destination, Time departureTime, int flightCost, int baseRate, Plane plane, Airline airline, List<Boolean> boardingPassengers, List<Integer> levies, List<Airport> transitAirports) {
+        super(flightNumber, destination, departureTime, flightCost, baseRate, plane, airline);
         this.boardingPassengers = boardingPassengers;
         this.levies = levies;
-
+        this.transitAirports = transitAirports;
     }
 
     /**
@@ -42,8 +42,12 @@ public class IndirectFlight extends Flight {
      * Returns a flight's levies.
      * @return flight's levies
      */
-    public List<Integer> getLevies() {
-        return levies;
+    public Iterator<Integer> getLevies() {
+        return levies.iterator();
+    }
+
+    public Iterator<Airport> getTransitAirports() {
+        return transitAirports.iterator();
     }
 
 }
